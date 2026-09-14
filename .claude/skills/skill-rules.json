@@ -1,0 +1,312 @@
+{
+  "version": "2.0",
+  "description": "Prompt triggers for the skill-activation-prompt hook. Keywords match whole words (case-insensitive); intentPatterns are regexes tested against the lowercased prompt. Nothing else in this file is read by any hook: file-path triggers and enforcement levels were removed because no consumer existed.",
+  "skills": {
+    "git-commit": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "commit",
+          "commit message",
+          "conventional commit",
+          "semantic commit",
+          "stage and commit"
+        ],
+        "intentPatterns": [
+          "(write|create|make|generate|reword|fix).*?commit",
+          "(stage|add).*?(and|then).*?commit",
+          "(how to|best practice).*?commit.*?(message|format)"
+        ]
+      }
+    },
+    "convex": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "convex",
+          "query",
+          "mutation",
+          "schema",
+          "defineTable",
+          "withIndex",
+          "internalMutation",
+          "internalQuery",
+          "internalAction",
+          "ctx.db",
+          "validator",
+          "v.id",
+          "migration",
+          "cron",
+          "occ"
+        ],
+        "intentPatterns": [
+          "(create|add|implement|write).*?(query|mutation|action|schema|helper|index|validator)",
+          "(how to|best practice).*?(convex|query|mutation|schema)",
+          "(fix|debug).*?(convex|query|mutation|occ|slow query)"
+        ]
+      }
+    },
+    "workos": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "workos",
+          "authkit",
+          "sealed session",
+          "organization_id",
+          "admin portal",
+          "WORKOS_COOKIE_PASSWORD",
+          "webhook signature",
+          "widget token",
+          "JWKS",
+          "authkitMiddleware",
+          "getAccessToken",
+          "sso",
+          "saml",
+          "oidc"
+        ],
+        "intentPatterns": [
+          "(add|implement|setup|configure).*?(auth|workos|sso|saml|oidc|rbac|role|permission|webhook)",
+          "(how to|best practice).*?(workos|authkit|organization|rbac|role|permission)",
+          "(fix|debug).*?(auth|login|callback|workos|token|session)"
+        ]
+      }
+    },
+    "architecture": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "ConvexProviderWithAuth",
+          "feature folder",
+          "feature layout",
+          "api aggregator",
+          "aggregator",
+          "modular schema",
+          "3-layer",
+          "three-layer",
+          "ssr hydration",
+          "server-side token",
+          "integration layer",
+          "cross-cutting",
+          "architecture",
+          "standards",
+          "how do we",
+          "convention",
+          "house rule",
+          "why do we"
+        ],
+        "intentPatterns": [
+          "(setup|wire|configure).*?(provider|convex.*tanstack|tanstack.*convex|auth.*convex)",
+          "(implement|add|create).*?(feature folder|aggregator|ssr.*convex|convex.*ssr)",
+          "(how does|how to).*?(provider|ssr.*auth|auth.*ssr|convex.*react|react.*convex)",
+          "(which|what).*?(pattern|layer|folder).*?(should|do we)",
+          "(how|where|why).*?(do we|should i|does this repo|is it done here)",
+          "(what|which).*?(rule|convention|standard).*?(for|about|on)"
+        ]
+      }
+    },
+    "tanstack": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "component",
+          "page",
+          "modal",
+          "dialog",
+          "form",
+          "route",
+          "loader",
+          "styling",
+          "frontend",
+          "tanstack",
+          "router",
+          "route loader",
+          "useSuspenseQuery",
+          "useMutation",
+          "useQuery",
+          "shadcn",
+          "hydration",
+          "optimistic update",
+          "notFoundComponent"
+        ],
+        "intentPatterns": [
+          "(create|add|make|build|update|modify|edit|write).*?(component|page|modal|dialog|form|route|loader)",
+          "(how to|best practice).*?(component|react|tanstack|router|shadcn)",
+          "(style|design|layout).*?(component|page)",
+          "(fix|debug).*?(route|router|loader|component|hydration|cache miss)"
+        ]
+      }
+    },
+    "error-tracking": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "error handling",
+          "error boundary",
+          "error tracking",
+          "exception",
+          "posthog",
+          "captureException",
+          "feature flag",
+          "analytics",
+          "toast"
+        ],
+        "intentPatterns": [
+          "(add|create|implement|setup).*?(error handling|error boundary|error tracking|posthog|analytics|feature flag)",
+          "(fix|handle|catch).*?(error|exception)",
+          "(how to|best practice).*?(error|posthog|monitoring)"
+        ]
+      }
+    },
+    "resend": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "resend",
+          "email",
+          "send email",
+          "email template",
+          "react-email",
+          "react email",
+          "transactional email",
+          "broadcast",
+          "audience",
+          "resendContactId",
+          "idempotency key",
+          "email webhook"
+        ],
+        "intentPatterns": [
+          "(send|create|add|build|debug).*?(email|template|broadcast)",
+          "(how to|best practice).*?(email|resend|react.?email)",
+          "(fix|debug).*?(email|resend|template|delivery)",
+          "(add|setup|configure).*?(resend|audience|webhook.*email)"
+        ]
+      }
+    },
+    "tdd-workflow": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "tdd",
+          "test-driven",
+          "test driven",
+          "write tests",
+          "generate tests",
+          "failing tests",
+          "red green",
+          "test first",
+          "convex-test",
+          "test fixtures",
+          "test setup",
+          "vitest",
+          "run the tests",
+          "run tests"
+        ],
+        "intentPatterns": [
+          "(write|create|generate|add|run).*?tests?",
+          "(start|begin|use|follow).*?tdd",
+          "test.*?(first|before|driven)",
+          "(how to|best practice).*?test.*?convex",
+          "(fixture|setup).*?test",
+          "test.*?(coverage|comprehensive|thorough)"
+        ]
+      }
+    },
+    "grilling": {
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "grill",
+          "grill me",
+          "interrogate",
+          "stress test",
+          "stress-test",
+          "poke holes",
+          "challenge this",
+          "sharpen",
+          "think this through",
+          "what am i missing",
+          "design tree",
+          "interview me"
+        ],
+        "intentPatterns": [
+          "(grill|interrogate|stress.?test|challenge|poke holes in).*?(me|this|plan|design|idea|spec|approach)",
+          "(what|anything).*?(am i|are we).*?(missing|forgetting|not thinking)",
+          "(help me|let'?s).*?think.*?(through|about).*?(this|design|plan)",
+          "(sharpen|tighten|pressure.?test).*?(plan|spec|design|idea)"
+        ]
+      }
+    },
+    "domain-language": {
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "glossary",
+          "terminology",
+          "what do we call",
+          "ubiquitous language",
+          "domain model",
+          "adr",
+          "architecture decision",
+          "decision record",
+          "vocabulary"
+        ],
+        "intentPatterns": [
+          "(what|which).*(do we|should we).*(call|name)",
+          "(add|write|record|update).*(glossary|term|adr|decision record)",
+          "(define|clarify|sharpen).*(term|terminology|concept|vocabulary)",
+          "(is it|do we say).*(or).*\\?"
+        ]
+      }
+    },
+    "writing-for-agents": {
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "write a skill",
+          "new skill",
+          "skill description",
+          "edit CLAUDE.md",
+          "AGENTS.md",
+          "slash command",
+          "context pointer",
+          "skill isn't firing",
+          "skill not activating",
+          "audit the description"
+        ],
+        "intentPatterns": [
+          "(write|create|edit|improve|audit).*(skill|slash command|claude\\.md|agents\\.md)",
+          "(skill|hook|command).*(not|isn'?t|never).*(fir|activat|trigger|run)",
+          "(why|how).*(description|pointer).*(trigger|fire|match)"
+        ]
+      }
+    },
+    "unslop": {
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "unslop",
+          "de-slop",
+          "reads like ai",
+          "sounds like ai",
+          "tighten this",
+          "too wordy",
+          "pr description",
+          "release notes",
+          "rewrite this prose",
+          "make this read better"
+        ],
+        "intentPatterns": [
+          "(unslop|de-?slop)",
+          "(reads?|sounds?).*(like|as if).*(ai|chatgpt|a robot|generated)",
+          "(tighten|clean ?up|rewrite|punch up).*(prose|writing|description|copy|wording)",
+          "(write|draft).*(pr description|release notes|changelog|announcement)"
+        ]
+      }
+    },
+    "setup-project": {
+      "priority": "high",
+      "_note": "No promptTriggers by design. Setup is user-invoked only; auto-firing it mid-task would rewrite config nobody asked to change."
+    }
+  }
+}

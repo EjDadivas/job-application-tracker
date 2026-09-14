@@ -1,0 +1,86 @@
+{
+  "env": {
+    "BASH_MAX_OUTPUT_LENGTH": "15000"
+  },
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write",
+      "MultiEdit",
+      "NotebookEdit",
+      "Bash(npm test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run gen:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run check:devkit:*)",
+      "Bash(npx vitest run:*)",
+      "Bash(npx convex dev --once:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm run lint:*)",
+      "Bash(pnpm run gen:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(pnpm run check:devkit:*)",
+      "Bash(pnpm exec vitest run:*)",
+      "Bash(pnpm exec convex dev --once:*)",
+      "Bash(bun run test:*)",
+      "Bash(bun run lint:*)",
+      "Bash(bun run gen:*)",
+      "Bash(bun run build:*)",
+      "Bash(bun run check:devkit:*)",
+      "Bash(bunx vitest run:*)",
+      "Bash(bunx convex dev --once:*)",
+      "Bash(yarn test:*)",
+      "Bash(yarn run lint:*)",
+      "Bash(yarn run gen:*)",
+      "Bash(yarn run build:*)",
+      "Bash(yarn run check:devkit:*)",
+      "Bash(yarn exec vitest run:*)",
+      "Bash(yarn exec convex dev --once:*)",
+      "Bash(node scripts/check-devkit.mjs:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git worktree list:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(npx netlify sites:create:*)",
+      "Bash(npx netlify link:*)",
+      "Bash(npx netlify env:set:*)",
+      "Bash(npx netlify deploy:*)",
+      "Bash(npx netlify api:*)",
+      "Bash(npx netlify status:*)",
+      "Bash(npx convex deployment token create:*)",
+      "Bash(npx convex env set:*)",
+      "Bash(npx convex env list:*)",
+      "Bash(npx workos@latest:*)",
+      "Bash(npx convex env default set:*)",
+      "Bash(npx convex env default list:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/skill-activation-prompt.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/test-guard.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

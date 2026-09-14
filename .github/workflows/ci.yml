@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Vault wikilinks, backticked paths, skill frontmatter, hook scripts.
+      - run: node scripts/check-devkit.mjs
+      - run: npm run lint
+      - run: npm test
+      # Catches a template that typechecks but won't actually build.
+      - run: npm run build

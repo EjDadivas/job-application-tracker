@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# Two Tabs commit-msg hook — enforces semantic / Conventional Commit messages.
+# Format: <type>(<scope>): <subject>   (scope optional)
+# Types:  feat | fix | docs | style | refactor | test | chore
+#
+# Install (plain git):
+#   cp .claude/git-hooks/commit-msg .git/hooks/commit-msg
+#   chmod +x .git/hooks/commit-msg
+# See .claude/git-hooks/README.md for the Husky path.
+#
+# Dependency-free POSIX sh. Exits non-zero to reject a bad message.
+
+commit_msg_file="$1"
+# First non-comment, non-empty line is the subject we validate.
+subject=$(grep -v '^#' "$commit_msg_file" | sed '/^[[:space:]]*$/d' | head -n 1)
+
+# Allow git's own machine-generated messages through untouched.
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*|"Reapply "*)
+    exit 0
+    ;;
+esac
+
+# <type>(optional-scope): <subject>
+pattern='^(feat|fix|docs|style|refactor|test|chore)(\([a-z0-9._-]+\))?: .+'
+
+if printf '%s' "$subject" | grep -Eq "$pattern"; then
+  exit 0
+fi
+
+echo "✖ Commit message rejected — not a semantic commit." >&2
+echo >&2
+echo "  Got:    $subject" >&2
+echo "  Want:   <type>(<scope>): <subject>   (scope optional)" >&2
+echo "  Types:  feat | fix | docs | style | refactor | test | chore" >&2
+echo "  e.g.    feat(auth): add WorkOS sealed-session cookie" >&2
+echo >&2
+echo "  See the 'Git & semantic commit messages' wiki page." >&2
+exit 1

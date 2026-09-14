@@ -1,0 +1,5 @@
+# Meeting notes are local working artifacts and are not committed.
+# project/in-progress/, project/done/ and project/backlog/ are committed: with the
+# local-markdown tracker they are the tickets, and a dev-agent in its own worktree
+# only sees what git carries.
+project/meetings/

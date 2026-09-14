@@ -1,0 +1,9 @@
+convex/_generated/
+example/convex/_generated/
+routeTree.gen.ts
+.agents/skills/
+
+# Devkit tooling + knowledge base: prose and prompt files, not app code. Prettier
+# reflows them wholesale, which buries real edits in formatting noise.
+.claude/
+vault/
